@@ -2,6 +2,7 @@ package net.elshaarawy.football.teams
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import net.elshaarawy.football.R
 
 class TeamsActivity : AppCompatActivity() {
 
