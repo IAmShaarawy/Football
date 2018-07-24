@@ -25,6 +25,7 @@ android {
 ext{
     retrofit = '2.4.0'
     support = '27.1.1'
+    arch_comp ='1.1.1'
 }
 
 dependencies {
@@ -42,4 +43,10 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+
+    implementation "android.arch.lifecycle:extensions:$arch_comp"
+    implementation "android.arch.persistence.room:runtime:$arch_comp"
+    kapt "android.arch.persistence.room:compiler:$arch_comp"
+    implementation "android.arch.persistence.room:rxjava2:$arch_comp"
+
 }
