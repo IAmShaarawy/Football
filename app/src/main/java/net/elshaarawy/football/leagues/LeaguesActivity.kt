@@ -1,7 +1,8 @@
-package net.elshaarawy.football
+package net.elshaarawy.football.leagues
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import net.elshaarawy.football.R
 
 class LeaguesActivity : AppCompatActivity() {
 
