@@ -13,7 +13,7 @@ class FootballApp : Application() {
     }
 
     companion object {
-        var context: Context? = null
+        private var context: Context? = null
         fun context(): Context = context!!
     }
 

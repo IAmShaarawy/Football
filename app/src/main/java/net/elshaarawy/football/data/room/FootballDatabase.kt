@@ -3,7 +3,7 @@ package net.elshaarawy.football.data.room
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
-import android.content.Context
+import net.elshaarawy.football.FootballApp
 import net.elshaarawy.football.data.room.daos.FixturesDao
 import net.elshaarawy.football.data.room.daos.LeaguesDao
 import net.elshaarawy.football.data.room.daos.TeamsDao
@@ -32,8 +32,8 @@ private abstract class FootballDatabase : RoomDatabase() {
         /*we must call fallbackToDestructiveMigration from the builder
         to make migration from old schema to the new one smoothly*/
         @Synchronized
-        fun getInstance(context: Context): FootballDatabase = footballDatabase
-                ?: Room.databaseBuilder(context, FootballDatabase::class.java, DATABASE_NAME)
+        fun getInstance(): FootballDatabase = footballDatabase
+                ?: Room.databaseBuilder(FootballApp.context(), FootballDatabase::class.java, DATABASE_NAME)
                         .fallbackToDestructiveMigration()
                         .build().also { footballDatabase = it }
 
