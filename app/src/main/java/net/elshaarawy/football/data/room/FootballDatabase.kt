@@ -18,7 +18,7 @@ const val DATABASE_NAME = "FootballDatabase"
 
 @Database(version = 1, exportSchema = false,
         entities = arrayOf(LeagueEntity::class, TeamEntity::class, FixtureEntity::class))
-private abstract class FootballDatabase : RoomDatabase() {
+abstract class FootballDatabase : RoomDatabase() {
 
     abstract fun leaguesDao(): LeaguesDao
 
