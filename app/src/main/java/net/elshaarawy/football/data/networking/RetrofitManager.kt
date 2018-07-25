@@ -20,11 +20,15 @@ private fun httpClientCreator(): OkHttpClient {
             .build()
 }
 
-fun retrofit(): Retrofit {
+private fun retrofit(): Retrofit {
     return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(AndroidSchedulers.mainThread()))
             .client(httpClientCreator())
             .build()
+}
+
+object retrofitManager {
+    val networkCall = retrofit()
 }
