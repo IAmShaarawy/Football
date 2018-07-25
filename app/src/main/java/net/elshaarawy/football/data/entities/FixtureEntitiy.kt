@@ -13,7 +13,7 @@ const val FIXTURE_TABLE = "fixture_table"
 const val FIXTURE_ID = "fixture_id"
 
 @Entity(tableName = FIXTURE_TABLE)
-data class Fixture(
+data class FixtureEntity(
         @ColumnInfo(name = FIXTURE_ID)
         @PrimaryKey(autoGenerate = true)
         val id: Int,
