@@ -46,7 +46,7 @@ class LeaguesViewHolder(private val item: View) : RecyclerView.ViewHolder(item) 
             league_played.text = "${data.currentMatchDay}/${data.numberOfMatchDays}"
             league_games.text = data.numberOfGames.toString()
             league_teams.text = data.numberOfTeams.toString()
-            setOnClickListener { TeamsActivity.startMe(data.id) }
+            setOnClickListener { TeamsActivity.startMe(data.id,data.caption) }
         }
     }
 }

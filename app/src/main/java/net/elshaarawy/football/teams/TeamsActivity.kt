@@ -12,7 +12,10 @@ class TeamsActivity : AppCompatActivity() {
     lateinit var teamsViewModel: TeamsViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_teams)
+
+
 
         val teamId: Long = 5
         teamsViewModel = ViewModelProviders.of(this, TeamsViewModelFactory(teamId))
@@ -21,11 +24,13 @@ class TeamsActivity : AppCompatActivity() {
 
     companion object {
         private const val LEAGUE_ID = "league_id"
-        fun startMe(leagueId: Long) {
+        private const val TITLE = "title"
+        fun startMe(leagueId: Long,title:String?) {
             Intent().apply {
                 setClass(FootballApp.context(), TeamsActivity::class.java)
                 putExtra(LEAGUE_ID, leagueId)
-                flags = Intent.FLAG_ACTIVITY_FORWARD_RESULT
+                putExtra(TITLE,title)
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK
             }.also { FootballApp.context().startActivity(it) }
 
         }

@@ -11,22 +11,26 @@ import net.elshaarawy.football.R
 
 class LeaguesActivity : AppCompatActivity() {
 
-    lateinit var leaguesViewModel: LeaguesViewModel
-    val leaguesAdapter by lazy { LeaguesAdapter() }
-    var isFirstTime = true
+    private lateinit var leaguesViewModel: LeaguesViewModel
+    private val leaguesAdapter by lazy { LeaguesAdapter() }
+    private var isFirstTime = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_leagues)
+        apply {
+            setContentView(R.layout.activity_leagues)
+            setTitle(R.string.competitions)
+        }
 
-        leaguesViewModel = ViewModelProviders.of(this).get(LeaguesViewModel::class.java)
-
-        leaguesViewModel.listData
-                .observe(this, Observer(leaguesAdapter::onDataChange))
-        leaguesViewModel.loadingSubject
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { league_refresh.isRefreshing = it }
+        leaguesViewModel = ViewModelProviders.of(this).get(LeaguesViewModel::class.java).let {
+            it.listData
+                    .observe(this, Observer(leaguesAdapter::onDataChange))
+            it.loadingSubject
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe { league_refresh.isRefreshing = it }
+            it
+        }
 
         league_refresh.setOnRefreshListener { leaguesViewModel.loadData() }
 
