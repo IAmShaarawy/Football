@@ -30,7 +30,7 @@ private class SVGLoader constructor(private val url: String) : Single<InputStrea
 
 }
 
-fun ImageView.loadSVG(url: String, @DrawableRes placeholder: Int? = null, @DrawableRes error: Int? = null) {
+fun ImageView.loadSVG(url: String?, @DrawableRes placeholder: Int? = null, @DrawableRes error: Int? = null) {
 
     if (placeholder != null) {
         Glide.with(this)
@@ -39,10 +39,6 @@ fun ImageView.loadSVG(url: String, @DrawableRes placeholder: Int? = null, @Drawa
                 .into(this)
     }
 
-    val onLoadFinished = fun(stream: InputStream) {
-        Sharp.loadInputStream(stream)
-                .into(this)
-    }
 
     val onLoadFailure = fun(throwable: Throwable) {
         if (error != null) {
@@ -53,7 +49,16 @@ fun ImageView.loadSVG(url: String, @DrawableRes placeholder: Int? = null, @Drawa
         }
     }
 
-    SVGLoader(url)
+    val onLoadFinished = fun(stream: InputStream) {
+        try {
+            Sharp.loadInputStream(stream)
+                    .into(this)
+        } catch (e: Exception) {
+            onLoadFailure(Throwable())
+        }
+    }
+
+    SVGLoader(url ?: "http://cdn.onlinewebfonts.com/svg/img_387362.png")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(onLoadFinished, onLoadFailure)

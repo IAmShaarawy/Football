@@ -23,14 +23,16 @@ class LeaguesActivity : AppCompatActivity() {
             setTitle(R.string.competitions)
         }
 
-        leaguesViewModel = ViewModelProviders.of(this).get(LeaguesViewModel::class.java).let {
-            it.listData
-                    .observe(this, Observer(leaguesAdapter::onDataChange))
-            it.loadingSubject
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe { league_refresh.isRefreshing = it }
-            it
-        }
+        leaguesViewModel = ViewModelProviders.of(this)
+                .get(LeaguesViewModel::class.java)
+                .let {
+                    it.listData
+                            .observe(this, Observer(leaguesAdapter::onDataChange))
+                    it.loadingSubject
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe { league_refresh.isRefreshing = it }
+                    it
+                }
 
         league_refresh.setOnRefreshListener { leaguesViewModel.loadData() }
 
