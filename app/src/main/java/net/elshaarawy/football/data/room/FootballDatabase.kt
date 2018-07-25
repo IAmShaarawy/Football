@@ -15,7 +15,7 @@ const val DATABASE_NAME = "FootballDatabase"
 
 @Database(version = 1, exportSchema = false,
         entities = arrayOf(LeagueEntity::class, TeamEntity::class, FixtureEntity::class))
-private abstract class FootballDatabase private constructor() : RoomDatabase() {
+private abstract class FootballDatabase : RoomDatabase() {
 
     companion object {
         private var footballDatabase: FootballDatabase? = null
