@@ -1,4 +1,4 @@
-package net.elshaarawy.football.data.entities
+package net.elshaarawy.football.data.room.entities
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity

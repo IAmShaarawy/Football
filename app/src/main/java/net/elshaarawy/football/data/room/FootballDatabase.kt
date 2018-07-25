@@ -4,10 +4,9 @@ import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
-import net.elshaarawy.football.R
-import net.elshaarawy.football.data.entities.FixtureEntity
-import net.elshaarawy.football.data.entities.LeagueEntity
-import net.elshaarawy.football.data.entities.TeamEntity
+import net.elshaarawy.football.data.room.entities.FixtureEntity
+import net.elshaarawy.football.data.room.entities.LeagueEntity
+import net.elshaarawy.football.data.room.entities.TeamEntity
 
 /**
  * Created by elshaarawy on 7/25/18.
