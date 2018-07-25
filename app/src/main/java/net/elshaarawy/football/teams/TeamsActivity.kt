@@ -22,9 +22,10 @@ class TeamsActivity : AppCompatActivity() {
     companion object {
         private const val LEAGUE_ID = "league_id"
         fun startMe(leagueId: Long) {
-            with(Intent()) {
+            Intent().apply {
                 setClass(FootballApp.context(), TeamsActivity::class.java)
                 putExtra(LEAGUE_ID, leagueId)
+                flags = Intent.FLAG_ACTIVITY_FORWARD_RESULT
             }.also { FootballApp.context().startActivity(it) }
 
         }

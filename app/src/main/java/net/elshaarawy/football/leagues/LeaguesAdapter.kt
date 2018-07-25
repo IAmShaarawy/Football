@@ -29,9 +29,9 @@ class LeaguesAdapter(private var leagues: List<LeagueEntity> = listOf()) : Recyc
         holder.bindData(leagues[position])
     }
 
-    fun onDataChange(newLeagues: List<LeagueEntity>) {
+    fun onDataChange(newLeagues: List<LeagueEntity>?) {
         apply {
-            leagues = newLeagues
+            leagues = newLeagues?: listOf()
             notifyDataSetChanged()
         }
     }

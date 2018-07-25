@@ -10,7 +10,7 @@ import io.reactivex.subjects.PublishSubject
  * Created by elshaarawy on 7/25/18.
  */
 abstract class BaseViewModel<T> : ViewModel() {
-    val listData: LiveData<List<T>> by lazy { MutableLiveData<List<T>>() }
+    val listData: MutableLiveData<List<T>> by lazy { MutableLiveData<List<T>>() }
     val loadingSubject: PublishSubject<Boolean> by lazy { PublishSubject.create<Boolean>() }
     protected val compositeDisposable: CompositeDisposable by lazy { CompositeDisposable() }
 
