@@ -20,8 +20,8 @@ interface FootballApis {
 
     @GET("teams/{team_id}/fixtures")
     fun getTeamFixtures(@Path("team_id") teamId: Long): Observable<FixturesResponse>
-}
 
-object footballApis{
-    val apis = retrofitManager.networkCall.create(FootballApis::class.java)
+    object footballApis{
+        val apis = retrofitManager.networkCall.create(FootballApis::class.java)
+    }
 }

@@ -12,7 +12,7 @@ import okhttp3.Response
  */
 class ConnectionInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain?): Response? {
-        if (isConnectionAvailable()) {
+        if (!isConnectionAvailable()) {
             throw ConnectionException()
         }
         val builder = chain?.request()?.newBuilder()
