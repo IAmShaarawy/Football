@@ -18,6 +18,6 @@ interface TeamsDao {
     @Query("SELECT * FROM teams_table WHERE team_league_id == :leagueId ")
     fun retrieveLeagueTeams(leagueId: Long): Single<List<TeamEntity>>
 
-    @Query("SELECT crestUrl FROM teams_table WHERE team_id == :team_id ")
-    fun retrieveCrestUrlForTeam(teamId: Long): Single<List<TeamEntity>>
+    @Query("SELECT crestUrl FROM teams_table WHERE team_id == :teamId ")
+    fun retrieveCrestUrlForTeam(teamId: Long): Single<String>
 }
