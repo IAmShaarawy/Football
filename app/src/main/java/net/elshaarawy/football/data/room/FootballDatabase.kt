@@ -4,6 +4,7 @@ import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
+import net.elshaarawy.football.data.room.daos.FixturesDao
 import net.elshaarawy.football.data.room.daos.LeaguesDao
 import net.elshaarawy.football.data.room.daos.TeamsDao
 import net.elshaarawy.football.data.room.entities.FixtureEntity
@@ -22,6 +23,8 @@ private abstract class FootballDatabase : RoomDatabase() {
     abstract fun leaguesDao(): LeaguesDao
 
     abstract fun teamsDao(): TeamsDao
+
+    abstract fun fixturesDao(): FixturesDao
 
     companion object {
         private var footballDatabase: FootballDatabase? = null
