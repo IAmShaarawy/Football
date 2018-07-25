@@ -15,11 +15,16 @@ class TeamActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_team)
 
-        val teamId: Long = 5
-        teamViewModel = ViewModelProviders.of(this, TeamViewModelFactory(teamId))
+        apply{
+            setContentView(R.layout.activity_team)
+            setTitle(intent.getStringExtra(TITLE))
+        }
+
+        teamViewModel = ViewModelProviders.of(this,
+                TeamViewModelFactory(intent.getLongExtra(TEAM_ID,0)))
                 .get(TeamViewModel::class.java)
+//                .let{}
     }
 
 
