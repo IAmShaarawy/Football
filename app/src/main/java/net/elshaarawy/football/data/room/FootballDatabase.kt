@@ -17,7 +17,7 @@ import net.elshaarawy.football.data.room.entities.TeamEntity
 const val DATABASE_NAME = "FootballDatabase"
 
 @Database(version = 1, exportSchema = false,
-        entities = arrayOf(LeagueEntity::class, TeamEntity::class, FixtureEntity::class))
+        entities = [(LeagueEntity::class), (TeamEntity::class), (FixtureEntity::class)])
 abstract class FootballDatabase : RoomDatabase() {
 
     abstract fun leaguesDao(): LeaguesDao
